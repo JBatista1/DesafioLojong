@@ -18,16 +18,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = HomesViewController()
+        window?.rootViewController = setupTarBar()
         window?.makeKeyAndVisible()
         
     }
 
+    private func setupTarBar() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        // MARK: Create and set Controllers
+        let Fundamentals = FundamentalsViewController()
+        Fundamentals.tabBarItem = UITabBarItem(title: "Fundamentos", image: UIImage(named: "fundamentals"), tag: 0)
+        let insight = InsightViewController()
+        insight.tabBarItem = UITabBarItem(title: "Insight", image: UIImage(named: "insight"), tag: 1)
+       
+        let tabBarList = [Fundamentals, insight]
+        tabBarController.viewControllers = tabBarList
+        tabBarController.tabBar.barTintColor = UIColor.white
+        tabBarController.tabBar.tintColor = UIColor.pinkLight
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)], for: .normal)
+       
+        return tabBarController
+        
+    }
     func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

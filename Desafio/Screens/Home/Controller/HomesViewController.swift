@@ -15,10 +15,11 @@ class HomesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        play()
+//        play()
         
     }
     override func loadView() {
+        view = customView
     }
     
     func play() {
