@@ -10,5 +10,6 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let charcoalGrey = UIColor(named: "charcoal_grey")
+    static let pinkLight = UIColor(named: "pinkLight")!
+    static let greenApp = UIColor(named: "greenApp")
 }
