@@ -22,21 +22,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
     }
-
+    // MARK: Create and set Controllers
     private func setupTarBar() -> UITabBarController {
         let tabBarController = UITabBarController()
-        // MARK: Create and set Controllers
-        let Fundamentals = FundamentalsViewController()
-        Fundamentals.tabBarItem = UITabBarItem(title: "Fundamentos", image: UIImage(named: "fundamentals"), tag: 0)
+        let navigationBar = UINavigationController()
+       
+        let fundamentals = FundamentalsViewController()
+        navigationBar.viewControllers = [fundamentals]
+
+        navigationBar.tabBarItem = UITabBarItem(title: "Fundamentos", image: UIImage(named: "fundamentals"), tag: 0)
         let insight = InsightViewController()
         insight.tabBarItem = UITabBarItem(title: "Insight", image: UIImage(named: "insight"), tag: 1)
        
-        let tabBarList = [Fundamentals, insight]
+        let tabBarList = [navigationBar, insight]
         tabBarController.viewControllers = tabBarList
         tabBarController.tabBar.barTintColor = UIColor.white
         tabBarController.tabBar.tintColor = UIColor.pinkLight
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)], for: .normal)
-       
         return tabBarController
         
     }

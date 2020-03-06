@@ -9,21 +9,36 @@
 import UIKit
 
 class FundamentalsViewController: UIViewController {
-
+    let customView = Fundamentals(positionsButtons: [CGPoint(x: 0, y: 0)])
+    var first = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-        // Do any additional setup after loading the view.
+        setupNavigationBart()
+    }
+    override func loadView() {
+        view = customView
+        
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        if first {
+            guard let position = (customView.route.image?.size.height) else {return}
+            customView.scrollRoute.contentOffset.y =  position
+            first = false
+        }
+        
     }
-    */
-
+    
+    func setupNavigationBart() {
+        navigationItem.title = "FUNDAMENTOS"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barTintColor = UIColor.greenApp
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.setShadows()
+        let leftIcon = UIBarButtonItem(image: UIImage(named: "back")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButton(sender:)))
+        navigationItem.leftBarButtonItem = leftIcon
+        
+    }
+    
+    @objc func backButton(sender: UIButton) {}
 }

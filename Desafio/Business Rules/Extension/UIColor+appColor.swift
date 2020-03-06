@@ -11,4 +11,5 @@ import UIKit
 
 extension UIColor {
     static let pinkLight = UIColor(named: "pinkLight")!
+    static let greenApp = UIColor(named: "greenApp")
 }
