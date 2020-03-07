@@ -10,6 +10,7 @@ import UIKit
 
 class StepsMockData {
     private let positions: [CGPoint]
+    private let positionsElephant: [CGPoint]
     private let imagesSteps: [ImageSteps]
     private let steps: [StepsRoute?]!
     // MARK: Steps in route
@@ -49,7 +50,7 @@ class StepsMockData {
                       CGPoint(x: 378, y: 6950),
                       CGPoint(x: 229, y: 6805),
                       CGPoint(x: 62, y: 6653),
-                      CGPoint(x: 254, y: 6508),
+                      CGPoint(x: 254, y: 6509),
                       CGPoint(x: 458, y: 6353),
                       CGPoint(x: 307, y: 6204),
                       CGPoint(x: 149, y: 6033),
@@ -109,8 +110,17 @@ class StepsMockData {
                        .playStepRiverVertical,
                        .playStepRiverVertical]
         steps = [step1,step2,step3,step4,step5,step6,step7,step8,step9,step10,step11,step12,step13,step14,step15,step16,step17,step18,step19,step20,step21,step22,step23,step24,step25,step26,step27,step28,step18,step30,step31]
+        
+        
+        positionsElephant = [CGPoint(x: 0, y: 0)
+        
+        ]
+        
     }
     
+    private func addSteps() {
+        
+    }
     func getSteps() -> [StepsRoute?] {
         return steps
     }

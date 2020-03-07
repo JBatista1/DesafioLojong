@@ -21,6 +21,7 @@ extension UIView {
         layer.shadowOpacity = opacity
         layer.shadowRadius = radius
     }
+    
     func insertShadowAndCornerRadius(withColor color: UIColor, Offset offset: CGSize, Opacity opacity: Float, Radius radius: CGFloat, andCornerRadius corneRadius: CGFloat ) {
         layer.shadowRadius = radius
         layer.shadowColor =  color.cgColor

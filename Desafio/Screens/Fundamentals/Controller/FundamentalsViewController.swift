@@ -34,12 +34,16 @@ class FundamentalsViewController: UIViewController {
     
     func setupAction(inButton buttons: [StepsRoute]) {
         for button in buttons {
-            button.step.addTarget(self, action: #selector(presenteView(sender:)), for: .touchUpInside)
+            button.step.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
         }
     }
     // Adicionar ViewController pra ser chamada de acordo com a tag
-    @objc func presenteView(sender: UIButton) {
-        print(sender.tag)
+    @objc func buttonClicked(sender: UIButton) {
+        let tag = sender.tag - 1
+        sender.isHighlighted = true
+        sender.setImage(customView.imagesSteps[tag].reviewImage, for: .normal)
+        sender.setImage(customView.imagesSteps[tag].reviewImage, for: .highlighted)
+        
     }
     func setupNavigationBart() {
         navigationItem.title = "FUNDAMENTOS"

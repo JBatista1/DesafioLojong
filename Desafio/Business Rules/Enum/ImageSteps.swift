@@ -14,6 +14,7 @@ enum ImageSteps {
     case playStepGrassHorizontal
     case playStepRiverVertical
     case playStepRiverHorizontal
+    case elephantGrass
     
     var image: UIImage {
         switch self {
@@ -25,9 +26,11 @@ enum ImageSteps {
             return UIImage(named: "playStepRiverVertical")!
         case .playStepRiverHorizontal:
             return UIImage(named: "playStepRiverHorizontal")!
-    
+        case .elephantGrass:
+            return UIImage(named: "elephantGrass")!
         }
     }
+    
     var reviewImage: UIImage {
         switch self {
         case .playStepGrassVertical:
@@ -38,9 +41,11 @@ enum ImageSteps {
             return UIImage(named: "reviewStepRiverVertical")!
         case .playStepRiverHorizontal:
             return UIImage(named: "reviewStepRiverHorizontal")!
+        case .elephantGrass:
+            return UIImage(named: "elephantRiver")!
         }
     }
-    
+
     var size: CGSize {
         switch self {
         case .playStepGrassVertical:
@@ -50,8 +55,9 @@ enum ImageSteps {
         case .playStepRiverVertical:
             return CGSize(width: 146, height: 146)
         case .playStepRiverHorizontal:
-            return CGSize(width: 143, height: 148)
-            
+            return CGSize(width: 146, height: 150)
+        case .elephantGrass:
+            return CGSize(width: 82, height: 65)
         }
     }
     
