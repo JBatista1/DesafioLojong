@@ -14,10 +14,13 @@ class FundamentalsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBart()
+        if let steps = customView.steps as? [StepsRoute] {
+            setupAction(inButton: steps)
+        }
+
     }
     override func loadView() {
         view = customView
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,6 +32,15 @@ class FundamentalsViewController: UIViewController {
         
     }
     
+    func setupAction(inButton buttons: [StepsRoute]) {
+        for button in buttons {
+            button.step.addTarget(self, action: #selector(presenteView(sender:)), for: .touchUpInside)
+        }
+    }
+    // Adicionar ViewController pra ser chamada de acordo com a tag
+    @objc func presenteView(sender: UIButton) {
+        print(sender.tag)
+    }
     func setupNavigationBart() {
         navigationItem.title = "FUNDAMENTOS"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]

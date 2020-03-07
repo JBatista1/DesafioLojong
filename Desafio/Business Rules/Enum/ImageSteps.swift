@@ -15,18 +15,43 @@ enum ImageSteps {
     case playStepRiverVertical
     case playStepRiverHorizontal
     
-    case reviewStepGrassVertical
-    case reviewStepGrassHotizontal
-    case reviewStepRiverVertical
-    case reviewStepRiverHorizontal
-   
-    var image : UIImage {
+    var image: UIImage {
         switch self {
         case .playStepGrassVertical:
-            return UIImage()
+            return UIImage(named: "playStepGrassVertical")!
+        case .playStepGrassHorizontal:
+            return UIImage(named: "playStepGrassHorizontal")!
+        case .playStepRiverVertical:
+            return UIImage(named: "playStepRiverVertical")!
+        case .playStepRiverHorizontal:
+            return UIImage(named: "playStepRiverHorizontal")!
+    
+        }
+    }
+    var reviewImage: UIImage {
+        switch self {
+        case .playStepGrassVertical:
+            return UIImage(named: "reviewStepGrassVertical")!
+        case .playStepGrassHorizontal:
+            return UIImage(named: "reviewStepGrassHotizontal")!
+        case .playStepRiverVertical:
+            return UIImage(named: "reviewStepRiverVertical")!
+        case .playStepRiverHorizontal:
+            return UIImage(named: "reviewStepRiverHorizontal")!
+        }
+    }
+    
+    var size: CGSize {
+        switch self {
+        case .playStepGrassVertical:
+            return CGSize(width: 130, height: 138)
+        case .playStepGrassHorizontal:
+            return CGSize(width: 133, height: 129)
+        case .playStepRiverVertical:
+            return CGSize(width: 146, height: 146)
+        case .playStepRiverHorizontal:
+            return CGSize(width: 143, height: 148)
             
-        default:
-            return UIImage()
         }
     }
     

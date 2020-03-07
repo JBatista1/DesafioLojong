@@ -24,7 +24,6 @@ extension UIImage {
      func getProportionResize(basedInLasteWidth widthOriginal: CGFloat, andNewWidth widthNew: CGFloat) -> CGFloat {
         let difference =  (widthOriginal - widthNew)
         let proportion =  1 - (difference / widthOriginal)
-        
         return proportion
     }
 }
