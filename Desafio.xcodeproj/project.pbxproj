@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A0799912412B22C00632A41 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0799902412B22C00632A41 /* Steps.swift */; };
+		9A0799912412B22C00632A41 /* StepsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0799902412B22C00632A41 /* StepsMockData.swift */; };
 		9A0799932412B53400632A41 /* ImageSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0799922412B53400632A41 /* ImageSteps.swift */; };
+		9A14D66A24130E0F00BEA93C /* Ordem in Resources */ = {isa = PBXBuildFile; fileRef = 9A14D66924130E0F00BEA93C /* Ordem */; };
+		9A14D66C2413101E00BEA93C /* StepsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A14D66B2413101E00BEA93C /* StepsRoute.swift */; };
+		9A2E5E212414BB29005A88EF /* ElephantPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E5E202414BB29005A88EF /* ElephantPosition.swift */; };
+		9A480ED6241300BC00115B73 /* UIButton+CreateStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */; };
 		9A4B2EA02411D4BD002B2558 /* UIImager+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */; };
 		9A4B2EA22411F20C002B2558 /* UINavigationController+setShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */; };
+		9A4C520B24146E5F0055AA56 /* CGRect+CreateFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4C520A24146E5F0055AA56 /* CGRect+CreateFrame.swift */; };
+		9A4D385D24140D2700635D4D /* ElephantSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4D385C24140D2700635D4D /* ElephantSteps.swift */; };
 		9A7342CE2411B2A100DB5906 /* Fundamentals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7342CD2411B2A100DB5906 /* Fundamentals.swift */; };
 		9A79A9362410852F001DF58B /* FundamentalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A79A9352410852F001DF58B /* FundamentalsViewController.swift */; };
 		9AA4AF4E2410111D00BD7C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4AF4D2410111D00BD7C64 /* AppDelegate.swift */; };
@@ -60,10 +66,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9A0799902412B22C00632A41 /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
+		9A0799902412B22C00632A41 /* StepsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsMockData.swift; sourceTree = "<group>"; };
 		9A0799922412B53400632A41 /* ImageSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSteps.swift; sourceTree = "<group>"; };
+		9A14D66924130E0F00BEA93C /* Ordem */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ordem; sourceTree = "<group>"; };
+		9A14D66B2413101E00BEA93C /* StepsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsRoute.swift; sourceTree = "<group>"; };
+		9A2E5E202414BB29005A88EF /* ElephantPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantPosition.swift; sourceTree = "<group>"; };
+		9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CreateStep.swift"; sourceTree = "<group>"; };
 		9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImager+resize.swift"; sourceTree = "<group>"; };
 		9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+setShadow.swift"; sourceTree = "<group>"; };
+		9A4C520A24146E5F0055AA56 /* CGRect+CreateFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+CreateFrame.swift"; sourceTree = "<group>"; };
+		9A4D385C24140D2700635D4D /* ElephantSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantSteps.swift; sourceTree = "<group>"; };
 		9A7342CD2411B2A100DB5906 /* Fundamentals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fundamentals.swift; sourceTree = "<group>"; };
 		9A79A9352410852F001DF58B /* FundamentalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundamentalsViewController.swift; sourceTree = "<group>"; };
 		9AA4AF4A2410111D00BD7C64 /* Desafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desafio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9A7342CD2411B2A100DB5906 /* Fundamentals.swift */,
-				9A0799902412B22C00632A41 /* Steps.swift */,
+				9A14D66B2413101E00BEA93C /* StepsRoute.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +156,7 @@
 		9A7342CF2411B31400DB5906 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9A4D385C24140D2700635D4D /* ElephantSteps.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,7 +369,10 @@
 		9AA4AFB22410168700BD7C64 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9A0799902412B22C00632A41 /* StepsMockData.swift */,
 				9AA4AFB32410169600BD7C64 /* Alert.swift */,
+				9A14D66924130E0F00BEA93C /* Ordem */,
+				9A2E5E202414BB29005A88EF /* ElephantPosition.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -369,6 +385,8 @@
 				9AA4AFB6241016BC00BD7C64 /* UIView+MaskInteroConstraints.swift */,
 				9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */,
 				9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */,
+				9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */,
+				9A4C520A24146E5F0055AA56 /* CGRect+CreateFrame.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -480,6 +498,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A14D66A24130E0F00BEA93C /* Ordem in Resources */,
 				9AA4AF5A2410112000BD7C64 /* LaunchScreen.storyboard in Resources */,
 				9AA4AF572410112000BD7C64 /* Assets.xcassets in Resources */,
 			);
@@ -527,6 +546,8 @@
 				9AA4AF89241012F600BD7C64 /* HTTPTask.swift in Sources */,
 				9A4B2EA02411D4BD002B2558 /* UIImager+resize.swift in Sources */,
 				9AA4AF8C241012F600BD7C64 /* NetworkError.swift in Sources */,
+				9A4C520B24146E5F0055AA56 /* CGRect+CreateFrame.swift in Sources */,
+				9A4D385D24140D2700635D4D /* ElephantSteps.swift in Sources */,
 				9AA4AF91241012F600BD7C64 /* ProviderProtocol.swift in Sources */,
 				9AA4AF8D241012F600BD7C64 /* Network.swift in Sources */,
 				9AA4AF8A241012F600BD7C64 /* NetworkResponse.swift in Sources */,
@@ -540,15 +561,18 @@
 				9AA4AF4E2410111D00BD7C64 /* AppDelegate.swift in Sources */,
 				9AA4AF8E241012F600BD7C64 /* URLSessionProvider.swift in Sources */,
 				9AA4AF92241012F600BD7C64 /* URLSessionDataTaskProtocol.swift in Sources */,
-				9A0799912412B22C00632A41 /* Steps.swift in Sources */,
+				9A480ED6241300BC00115B73 /* UIButton+CreateStep.swift in Sources */,
+				9A0799912412B22C00632A41 /* StepsMockData.swift in Sources */,
 				9AA4AFB7241016BC00BD7C64 /* UIView+MaskInteroConstraints.swift in Sources */,
 				9AA4AF88241012F600BD7C64 /* ParametersEncoding.swift in Sources */,
+				9A2E5E212414BB29005A88EF /* ElephantPosition.swift in Sources */,
 				9A4B2EA22411F20C002B2558 /* UINavigationController+setShadow.swift in Sources */,
 				9AA4AF94241012F600BD7C64 /* URLComponents.swift in Sources */,
 				9A7342CE2411B2A100DB5906 /* Fundamentals.swift in Sources */,
 				9A0799932412B53400632A41 /* ImageSteps.swift in Sources */,
 				9AA4AF502410111D00BD7C64 /* SceneDelegate.swift in Sources */,
 				9AED2AA2241096D7004A02FB /* InsightViewController.swift in Sources */,
+				9A14D66C2413101E00BEA93C /* StepsRoute.swift in Sources */,
 				9AA4AF8F241012F600BD7C64 /* ServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
