@@ -42,4 +42,20 @@ extension UIView {
         return CGAffineTransform(rotationAngle: rotation)
         
     }
+    func viewCodeMaskConstraints() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    func blink(duration: TimeInterval = 0.1, delay: TimeInterval = 0.0, alpha: CGFloat = 0.0) {
+        UIView.animate(withDuration: duration, delay: delay, options: [.curveLinear], animations: {
+            self.alpha = alpha
+        })
+        UIView.animate(withDuration: duration, delay: delay, options: [.curveLinear], animations: {
+            self.alpha = 1.0
+        })
+    }
+    func move(toFrame center: CGPoint) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseIn], animations: {
+            self.center = center
+        })
+    }
 }

@@ -9,21 +9,26 @@
 import UIKit
 
 class InsightViewController: UIViewController {
-
+    let customView = Insight(heightSegment: 44)
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupActions()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupActions() {
+        customView.video.addTarget(self, action: #selector(changeTable(sender:)), for: .touchUpInside)
+        customView.article.addTarget(self, action: #selector(changeTable(sender:)), for: .touchUpInside)
+        customView.quote.addTarget(self, action: #selector(changeTable(sender:)), for: .touchUpInside)
     }
-    */
-
+    
+    override func loadView() {
+        view = customView
+    }
+    
+    @objc func changeTable(sender: UIButton) {
+        customView.defaultColorButton()
+        sender.setTitleColor(UIColor.redLowSaturation2, for: .normal)
+        customView.thumbView.move(toFrame: sender.center)
+    }
+    
 }

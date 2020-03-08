@@ -67,7 +67,7 @@ extension Fundamentals: ViewCodable {
             scrollRoute.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             scrollRoute.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             scrollRoute.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            scrollRoute.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+            scrollRoute.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2)
         ])
         
         NSLayoutConstraint.activate([
