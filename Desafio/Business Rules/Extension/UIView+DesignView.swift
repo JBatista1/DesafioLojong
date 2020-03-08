@@ -31,4 +31,15 @@ extension UIView {
         clipsToBounds = true
         layer.masksToBounds = false
     }
+    func rotation(withValue value: CGFloat) {
+        if value != 0 {
+            let rotation = CGFloat(value * CGFloat.pi/180)
+            self.transform = CGAffineTransform(rotationAngle: rotation)
+        }
+    }
+    static func rotation(withValue value: CGFloat) -> CGAffineTransform {
+        let rotation = CGFloat(value * CGFloat.pi/180)
+        return CGAffineTransform(rotationAngle: rotation)
+        
+    }
 }

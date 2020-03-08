@@ -10,14 +10,18 @@ import UIKit
 
 class FundamentalsViewController: UIViewController {
     let customView = Fundamentals(positionsButtons: [CGPoint(x: 0, y: 0)])
+    var stepsTaken: [Bool] = []
+    var elephantPosition: ElephantPosition!
     var first = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBart()
         if let steps = customView.steps as? [StepsRoute] {
             setupAction(inButton: steps)
         }
-
+        elephantPosition = ElephantPosition(imageView: customView.elephant, proportion: customView.proportion, elephantPositions: customView.elephantPositions)
+        
     }
     override func loadView() {
         view = customView
@@ -29,7 +33,6 @@ class FundamentalsViewController: UIViewController {
             customView.scrollRoute.contentOffset.y =  position
             first = false
         }
-        
     }
     
     func setupAction(inButton buttons: [StepsRoute]) {
@@ -37,14 +40,17 @@ class FundamentalsViewController: UIViewController {
             button.step.addTarget(self, action: #selector(buttonClicked(sender:)), for: .touchUpInside)
         }
     }
+    
     // Adicionar ViewController pra ser chamada de acordo com a tag
     @objc func buttonClicked(sender: UIButton) {
         let tag = sender.tag - 1
         sender.isHighlighted = true
         sender.setImage(customView.imagesSteps[tag].reviewImage, for: .normal)
         sender.setImage(customView.imagesSteps[tag].reviewImage, for: .highlighted)
-        
+        customView.resetElephantTranform()
+        elephantPosition.movedElephant(basedTag: tag)
     }
+    
     func setupNavigationBart() {
         navigationItem.title = "FUNDAMENTOS"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: UIColor.white]

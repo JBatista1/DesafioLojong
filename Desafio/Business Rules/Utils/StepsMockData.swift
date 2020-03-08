@@ -7,45 +7,17 @@
 //
 
 import UIKit
+typealias PositionsElephant = (CGPoint, Int)
 
 class StepsMockData {
     private let positions: [CGPoint]
-    private let positionsElephant: [CGPoint]
+    private let elephantPositions: [ElephantSteps]
     private let imagesSteps: [ImageSteps]
-    private let steps: [StepsRoute?]!
-    // MARK: Steps in route
-    var step1: StepsRoute!
-    var step2: StepsRoute!
-    var step3: StepsRoute!
-    var step4: StepsRoute!
-    var step5: StepsRoute!
-    var step6: StepsRoute!
-    var step7: StepsRoute!
-    var step8: StepsRoute!
-    var step9: StepsRoute!
-    var step10: StepsRoute!
-    var step11: StepsRoute!
-    var step12: StepsRoute!
-    var step13: StepsRoute!
-    var step14: StepsRoute!
-    var step15: StepsRoute!
-    var step16: StepsRoute!
-    var step17: StepsRoute!
-    var step18: StepsRoute!
-    var step19: StepsRoute!
-    var step20: StepsRoute!
-    var step21: StepsRoute!
-    var step22: StepsRoute!
-    var step23: StepsRoute!
-    var step24: StepsRoute!
-    var step25: StepsRoute!
-    var step26: StepsRoute!
-    var step27: StepsRoute!
-    var step28: StepsRoute!
-    var step29: StepsRoute!
-    var step30: StepsRoute!
-    var step31: StepsRoute!
+    private var steps: [StepsRoute]
+    
     init() {
+        steps = []
+        
         positions = [ CGPoint(x: 378, y: 7140),
                       CGPoint(x: 378, y: 6950),
                       CGPoint(x: 229, y: 6805),
@@ -63,14 +35,14 @@ class StepsMockData {
                       CGPoint(x: 326, y: 4282),
                       CGPoint(x: 49, y: 4002),
                       CGPoint(x: 49, y: 3792),
-                      CGPoint(x: 211, y: 3620),
+                      CGPoint(x: 211, y: 3619),
                       CGPoint(x: 358, y: 3483),
                       CGPoint(x: 358, y: 3314),
                       CGPoint(x: 358, y: 3145),
                       CGPoint(x: 149, y: 2869),
                       CGPoint(x: 426, y: 2603),
                       CGPoint(x: 426, y: 2383),
-                      CGPoint(x: 267, y: 2210.5),
+                      CGPoint(x: 267, y: 2209),
                       CGPoint(x: 117, y: 2055),
                       CGPoint(x: 117, y: 1865),
                       CGPoint(x: 117, y: 1655),
@@ -109,26 +81,62 @@ class StepsMockData {
                        .playStepRiverHorizontal,
                        .playStepRiverVertical,
                        .playStepRiverVertical]
-        steps = [step1,step2,step3,step4,step5,step6,step7,step8,step9,step10,step11,step12,step13,step14,step15,step16,step17,step18,step19,step20,step21,step22,step23,step24,step25,step26,step27,step28,step18,step30,step31]
         
-        
-        positionsElephant = [CGPoint(x: 0, y: 0)
-        
-        ]
-        
+        elephantPositions = [ElephantSteps(position: CGPoint(x: 405, y: 7276), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 405, y: 7079), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 382, y: 6863), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 132, y: 6825), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 110, y: 6562), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 431, y: 6535), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 464, y: 6262), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 207, y: 6198), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 168, y: 5982), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 168, y: 5814), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 180, y: 5580), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 409, y: 5518), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 304, y: 4981), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 144, y: 4732), angle: 280, flip: true),
+                             ElephantSteps(position: CGPoint(x: 231, y: 4456), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 212, y: 4183), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 77, y: 3938), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 110, y: 3678), angle: -39, flip: true),
+                             ElephantSteps(position: CGPoint(x: 376, y: 3610), angle: -63, flip: true),
+                             ElephantSteps(position: CGPoint(x: 387, y: 3447), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 387, y: 3276), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 277, y: 3048), angle: 0, flip: false),
+                             ElephantSteps(position: CGPoint(x: 348, y: 2775), angle: 0, flip: true),
+                             ElephantSteps(position: CGPoint(x: 458, y: 2529), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 436, y: 2271), angle: -292, flip: false),
+                             ElephantSteps(position: CGPoint(x: 163, y: 2200), angle: -305, flip: false),
+                             ElephantSteps(position: CGPoint(x: 145, y: 2000), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 145, y: 1800), angle: -80, flip: true),
+                             ElephantSteps(position: CGPoint(x: 167, y: 1547), angle: -56, flip: true),
+                             ElephantSteps(position: CGPoint(x: 426, y: 1490), angle: -56, flip: true),
+                             ElephantSteps(position: CGPoint(x: 456, y: 1240), angle: -80, flip: true)]
     }
     
     private func addSteps() {
-        
+        for _ in 0..<imagesSteps.count {
+            let step = StepsRoute(frame: .zero)
+            steps.append(step)
+        }
     }
+    
     func getSteps() -> [StepsRoute?] {
+        addSteps()
         return steps
     }
+    
     func getPosition() -> [CGPoint] {
         return positions
     }
+    
     func getImagesSteps() -> [ImageSteps] {
         return imagesSteps
+    }
+    
+    func getElephantInSteps() -> [ElephantSteps] {
+        return elephantPositions
     }
     
 }

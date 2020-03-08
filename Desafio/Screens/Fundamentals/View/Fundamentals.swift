@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 class Fundamentals: UIView {
-    private let numberSteps: Int
-    private let positionsButtons: [CGPoint]
     var proportion: CGFloat!
+    let stepsMock = StepsMockData()
     var positions: [CGPoint]!
     var imagesSteps: [ImageSteps]!
-    let stepsMock = StepsMockData()
+    var elephantPositions: [ElephantSteps]!
     var steps: [StepsRoute?]!
+    var staticTranformation: CGAffineTransform!
     
     let route: UIImageView = {
         let imageView = UIImageView()
@@ -25,8 +25,9 @@ class Fundamentals: UIView {
         return imageView
     }()
     
-    let elephant: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "elephantGrass"))
+    var elephant: UIImageView = {
+        let imageView = UIImageView(image: ImageSteps.elephantGrass.image)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -39,17 +40,21 @@ class Fundamentals: UIView {
     }()
     
     init(positionsButtons: [CGPoint]) {
-        self.numberSteps = positionsButtons.count
-        self.positionsButtons = positionsButtons
         super.init(frame: .zero)
         setProportion()
         setupView()
-        setupSteps()
+        staticTranformation = elephant.transform
+       
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func resetElephantTranform() {
+        elephant.transform = staticTranformation
+        layoutSubviews()
+    }
+    
 }
 extension Fundamentals: ViewCodable {
     func buildViewHierarchy() {
@@ -75,6 +80,7 @@ extension Fundamentals: ViewCodable {
     }
     
     func setupAdditionalConfiguration() {
+         setupSteps()
     }
     
 }
@@ -85,31 +91,25 @@ extension Fundamentals {
         steps = stepsMock.getSteps()
         positions = stepsMock.getPosition()
         imagesSteps = stepsMock.getImagesSteps()
-        
+        elephantPositions = stepsMock.getElephantInSteps()
         for index in 0..<steps.count {
             createSteps(step: &steps[index], imageStep: imagesSteps[index], tag: index)
         }
         
-        //Ajustar a cuvartura do rio
-        steps[24]!.transform = CGAffineTransform(rotationAngle: CGFloat(1 * CGFloat.pi/180))
-        steps[10]!.transform = CGAffineTransform(rotationAngle: CGFloat(-1 * CGFloat.pi/180))
-        elephant.frame = createFrame(imagestep: .elephantGrass, point: CGPoint(x: 405, y: 7276))
+        elephant.frame = CGRect.createFrame(size: ImageSteps.elephantGrass.size, point: CGPoint(x: 405, y: 7276), proportion: proportion)
         scrollRoute.addSubview(elephant)
         
     }
     private func createSteps(step: inout StepsRoute?, imageStep: ImageSteps, tag: Int) {
-        step = StepsRoute(imageStep: imageStep, frame: createFrame(imagestep: imageStep, point: positions[tag]), tag: tag+1)
+        let frame = CGRect.createFrame(size: imageStep.size, point: positions[tag], proportion: proportion)
+        step = StepsRoute(imageStep: imageStep, frame: frame, tag: tag+1)
         scrollRoute.addSubview(step!)
     }
-    
-    private func createFrame(imagestep: ImageSteps, point: CGPoint) -> CGRect {
-        let frame = CGRect(x: point.x * proportion, y: point.y * proportion, width: imagestep.size.width * proportion, height: imagestep.size.height * proportion)
-        return frame
-    }
-    
+
     private func setProportion() {
         let imageWidth = (UIImage(named: "route")?.size.width)!
         let screenWidth = (UIScreen.main.bounds.width)
         proportion = UIImage(named: "route")?.getProportionResize(basedInLasteWidth: imageWidth, andNewWidth: screenWidth)
     }
+    
 }

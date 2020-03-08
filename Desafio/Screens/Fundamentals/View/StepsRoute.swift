@@ -24,6 +24,9 @@ class StepsRoute: UIView {
         button.isHighlighted = true
         return button
     }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
     
     init(imageStep: ImageSteps, frame: CGRect, tag: Int) {
         super.init(frame: frame)
