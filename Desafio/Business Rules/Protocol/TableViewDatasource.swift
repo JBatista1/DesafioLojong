@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TableViewDatasource: UITableViewDataSource {
+protocol TableViewDatasource: UITableViewDataSource, UITableViewDelegate {
     associatedtype T
     var items:[T] { get }
     var tableView: UITableView? {get}

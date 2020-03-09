@@ -21,6 +21,14 @@ class Insight: UIView {
         return scroll
     }()
     
+    let information: UITableView = {
+        let table = UITableView()
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 600
+        table.viewCodeMaskConstraints()
+        return table
+
+    }()
     let thumbView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -68,7 +76,7 @@ class Insight: UIView {
         article.setTitleColor(.white, for: .normal)
         quote.setTitleColor(.white, for: .normal)
         video.setTitleColor(.white, for: .normal)
-      }
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -81,6 +89,7 @@ extension Insight: ViewCodable {
         segment.addSubview(video)
         segment.addSubview(article)
         segment.addSubview(quote)
+        addSubview(information)
         
     }
     
@@ -120,6 +129,12 @@ extension Insight: ViewCodable {
             thumbView.centerXAnchor.constraint(equalTo: video.centerXAnchor, constant: 0)
         ])
         
+        NSLayoutConstraint.activate([
+            information.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 10),
+            information.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            information.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            information.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        ])
     }
     
     func setupAdditionalConfiguration() {
