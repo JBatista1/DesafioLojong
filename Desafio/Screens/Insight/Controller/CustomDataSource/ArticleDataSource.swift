@@ -10,17 +10,16 @@ import Foundation
 import UIKit
 
 class ArticleDataSource: NSObject, TableViewDatasource {
-    typealias T = ArticleImage
-    var items: [ArticleImage]
-    fileprivate let cellId = "id"
+    typealias T = Article
+    var items: [Article]
+    fileprivate let cellId = "article"
     var tableView: UITableView?
-    var tag = 0
-    
-    required init(items: [ArticleImage], tableView: UITableView) {
+ 
+    required init(items: [Article], tableView: UITableView) {
         self.items = items
         self.tableView = tableView
         super.init()
-        tableView.register(VideoTableCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(ArticleTableCell.self, forCellReuseIdentifier: cellId)
         self.setupTableView()
     }
     
@@ -33,10 +32,20 @@ class ArticleDataSource: NSObject, TableViewDatasource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath) as? ArticleTableCell
-        cell?.setupValues(article: items[indexPath.row].article, image: items[indexPath.row].image)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ArticleTableCell
+        cell?.photo.image = UIImage(named: "imageDefault")
+        cell?.setupValues(articleImage: items[indexPath.row])
         cell?.backgroundColor = .white
         return cell!
+        
+    }
+    func getImage(url: String) -> UIImage {
+        let url = URL(string: url)
+        let data = try? Data(contentsOf: url!)
+        return UIImage(data: data!)!
+    }
+    
+    func updateImage(index: Int) {
         
     }
 }

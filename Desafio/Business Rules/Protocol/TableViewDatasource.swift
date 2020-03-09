@@ -10,7 +10,7 @@ import UIKit
 
 protocol TableViewDatasource: UITableViewDataSource, UITableViewDelegate {
     associatedtype T
-    var items:[T] { get }
+    var items: [T] { get }
     var tableView: UITableView? {get}
     
     init(items: [T], tableView: UITableView)
