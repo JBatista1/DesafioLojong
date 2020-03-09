@@ -25,14 +25,12 @@ class ArticleTableCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.viewCodeMaskConstraints()
-        imageView.image = UIImage(named: "model")
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
     let descriptionVideo: UILabel = {
         let label = UILabel()
-        label.text = "O que é a cidade.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação."
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15)

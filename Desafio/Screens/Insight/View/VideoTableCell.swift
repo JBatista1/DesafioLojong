@@ -21,13 +21,11 @@ class VideoTableCell: UITableViewCell {
         return label
     }()
     
-    let photo: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.viewCodeMaskConstraints()
-        imageView.image = UIImage(named: "model")
-        imageView.isUserInteractionEnabled = true
-        return imageView
+    let photo: UIButton = {
+        let button = UIButton()
+        button.viewCodeMaskConstraints()
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
     }()
     
     let play: UIImageView = {
@@ -40,7 +38,6 @@ class VideoTableCell: UITableViewCell {
     
     let descriptionVideo: UILabel = {
         let label = UILabel()
-        label.text = "O que é a cidade.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação.EP. 02: Ciência e Meditação."
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15)
@@ -84,7 +81,8 @@ class VideoTableCell: UITableViewCell {
     func setupValues(video: Video, image: UIImage) {
         titleVideo.text = video.name
         descriptionVideo.text = video.description
-        photo.image = image
+        photo.setImage(image, for: .normal)
+        
         
     }
     

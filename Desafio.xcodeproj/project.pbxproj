@@ -16,7 +16,8 @@
 		9A37E1C224161EEB00B92DDA /* ArticleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C124161EEB00B92DDA /* ArticleTableCell.swift */; };
 		9A37E1C42416207B00B92DDA /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C32416207B00B92DDA /* Video.swift */; };
 		9A37E1C6241620F000B92DDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C5241620F000B92DDA /* Article.swift */; };
-		9A37E1C9241624F800B92DDA /* VideoDataSorce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C8241624F800B92DDA /* VideoDataSorce.swift */; };
+		9A37E1C9241624F800B92DDA /* VideoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C8241624F800B92DDA /* VideoDataSource.swift */; };
+		9A37E1CB241629EA00B92DDA /* ArticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */; };
 		9A480ED6241300BC00115B73 /* UIButton+CreateStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */; };
 		9A4B2EA02411D4BD002B2558 /* UIImager+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */; };
 		9A4B2EA22411F20C002B2558 /* UINavigationController+setShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */; };
@@ -80,7 +81,8 @@
 		9A37E1C124161EEB00B92DDA /* ArticleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableCell.swift; sourceTree = "<group>"; };
 		9A37E1C32416207B00B92DDA /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		9A37E1C5241620F000B92DDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		9A37E1C8241624F800B92DDA /* VideoDataSorce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataSorce.swift; sourceTree = "<group>"; };
+		9A37E1C8241624F800B92DDA /* VideoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataSource.swift; sourceTree = "<group>"; };
+		9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataSource.swift; sourceTree = "<group>"; };
 		9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CreateStep.swift"; sourceTree = "<group>"; };
 		9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImager+resize.swift"; sourceTree = "<group>"; };
 		9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+setShadow.swift"; sourceTree = "<group>"; };
@@ -167,7 +169,8 @@
 		9A37E1C7241624C200B92DDA /* CustomDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				9A37E1C8241624F800B92DDA /* VideoDataSorce.swift */,
+				9A37E1C8241624F800B92DDA /* VideoDataSource.swift */,
+				9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */,
 			);
 			path = CustomDataSource;
 			sourceTree = "<group>";
@@ -579,7 +582,7 @@
 				9A4B2EA02411D4BD002B2558 /* UIImager+resize.swift in Sources */,
 				9AA4AF8C241012F600BD7C64 /* NetworkError.swift in Sources */,
 				9A4C520B24146E5F0055AA56 /* CGRect+CreateFrame.swift in Sources */,
-				9A37E1C9241624F800B92DDA /* VideoDataSorce.swift in Sources */,
+				9A37E1C9241624F800B92DDA /* VideoDataSource.swift in Sources */,
 				9A4D385D24140D2700635D4D /* ElephantSteps.swift in Sources */,
 				9AA4AF91241012F600BD7C64 /* ProviderProtocol.swift in Sources */,
 				9AA4AF8D241012F600BD7C64 /* Network.swift in Sources */,
@@ -604,6 +607,7 @@
 				9A7342CE2411B2A100DB5906 /* Fundamentals.swift in Sources */,
 				9A37E1C6241620F000B92DDA /* Article.swift in Sources */,
 				9AD69AD6241536B6009907A2 /* Insight.swift in Sources */,
+				9A37E1CB241629EA00B92DDA /* ArticleDataSource.swift in Sources */,
 				9A0799932412B53400632A41 /* ImageSteps.swift in Sources */,
 				9AA4AF502410111D00BD7C64 /* SceneDelegate.swift in Sources */,
 				9AED2AA2241096D7004A02FB /* InsightViewController.swift in Sources */,
