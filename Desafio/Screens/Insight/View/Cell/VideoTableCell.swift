@@ -1,5 +1,5 @@
 //
-//  ArticleTableCell.swift
+//  VideoTableCell.swift
 //  Desafio
 //
 //  Created by Joao Batista on 09/03/20.
@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-class ArticleTableCell: UITableViewCell {
+class VideoTableCell: UITableViewCell {
+    private let provider = URLSessionProvider()
     
     let titleVideo: UILabel = {
         let label = UILabel()
@@ -21,11 +22,18 @@ class ArticleTableCell: UITableViewCell {
         return label
     }()
     
-    let photo: UIImageView = {
+    let photo: UIButton = {
+        let button = UIButton()
+        button.viewCodeMaskConstraints()
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+    
+    let play: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.viewCodeMaskConstraints()
-        imageView.isUserInteractionEnabled = true
+        imageView.image = UIImage(named: "play")
         return imageView
     }()
     
@@ -33,7 +41,7 @@ class ArticleTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.grayApp
         label.viewCodeMaskConstraints()
         return label
@@ -51,7 +59,7 @@ class ArticleTableCell: UITableViewCell {
         let imageview = UIImageView()
         imageview.viewCodeMaskConstraints()
         imageview.image = UIImage(named: "sharing")
-        imageview.contentMode = .scaleAspectFit
+        imageview.contentMode = .scaleAspectFill
         return imageview
     }()
     let textSharing: UILabel = {
@@ -69,13 +77,23 @@ class ArticleTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         setupView()
+    }
+    
+    func setupValues(video: Video) {
+        titleVideo.text = video.name.uppercased()
+        descriptionVideo.text = video.videosDAODescription
+        requestImage(url: video.imageURL)
         
     }
-    func setupValues(article: Article, image: UIImage) {
-        titleVideo.text = article.title
-        descriptionVideo.text = article.text
-        photo.image = image
-        
+    
+    func requestImage(url: String) {
+        let url = URL(string: url)
+        URLSession.shared.dataTask(with: url!) { (data, _, _) in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.photo.setImage(UIImage(data: data), for: .normal)
+            }
+        }.resume()
     }
     
     required init?(coder: NSCoder) {
@@ -83,11 +101,11 @@ class ArticleTableCell: UITableViewCell {
     }
 }
 
-extension ArticleTableCell: ViewCodable {
+extension VideoTableCell: ViewCodable {
     func buildViewHierarchy() {
-        
         addSubview(titleVideo)
         addSubview(photo)
+        photo.addSubview(play)
         addSubview(descriptionVideo)
         addSubview(sharing)
         sharing.addSubview(iconSharing)
@@ -112,9 +130,17 @@ extension ArticleTableCell: ViewCodable {
         ])
         
         NSLayoutConstraint.activate([
+            play.heightAnchor.constraint(equalToConstant: 40),
+            play.widthAnchor.constraint(equalToConstant: 40),
+            play.centerYAnchor.constraint(equalTo: photo.centerYAnchor, constant: 0),
+            play.centerXAnchor.constraint(equalTo: photo.centerXAnchor, constant: 0)
+            
+        ])
+        
+        NSLayoutConstraint.activate([
             descriptionVideo.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 13),
-            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
-            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin + 13 ),
+            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin - 13)
         ])
         
         NSLayoutConstraint.activate([
@@ -129,6 +155,7 @@ extension ArticleTableCell: ViewCodable {
             iconSharing.widthAnchor.constraint(equalToConstant: 14),
             iconSharing.leadingAnchor.constraint(equalTo: sharing.leadingAnchor, constant: 6),
             iconSharing.centerYAnchor.constraint(equalTo: sharing.centerYAnchor, constant: 0)
+            
         ])
         NSLayoutConstraint.activate([
             textSharing.leadingAnchor.constraint(equalTo: iconSharing.trailingAnchor, constant: 7),

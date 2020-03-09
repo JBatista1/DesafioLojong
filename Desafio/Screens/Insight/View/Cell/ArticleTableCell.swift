@@ -1,5 +1,5 @@
 //
-//  VideoTableCell.swift
+//  ArticleTableCell.swift
 //  Desafio
 //
 //  Created by Joao Batista on 09/03/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class VideoTableCell: UITableViewCell {
+class ArticleTableCell: UITableViewCell {
     
     let titleVideo: UILabel = {
         let label = UILabel()
@@ -21,18 +21,11 @@ class VideoTableCell: UITableViewCell {
         return label
     }()
     
-    let photo: UIButton = {
-        let button = UIButton()
-        button.viewCodeMaskConstraints()
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    let play: UIImageView = {
+    let photo: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.viewCodeMaskConstraints()
-        imageView.image = UIImage(named: "play")
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -40,7 +33,7 @@ class VideoTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.grayApp
         label.viewCodeMaskConstraints()
         return label
@@ -78,25 +71,31 @@ class VideoTableCell: UITableViewCell {
         setupView()
         
     }
-    func setupValues(video: Video, image: UIImage) {
-        titleVideo.text = video.name
-        descriptionVideo.text = video.description
-        photo.setImage(image, for: .normal)
-        
-        
+    func setupValues(articleImage: Article) {
+        titleVideo.text = articleImage.title
+        descriptionVideo.text = articleImage.text
+        requestImage(url: articleImage.imageURL)
     }
     
+    func requestImage(url: String) {
+        let url = URL(string: url)
+        URLSession.shared.dataTask(with: url!) { (data, _, _) in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                 self.photo.image = UIImage(data: data)!
+            }
+        }.resume()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension VideoTableCell: ViewCodable {
+extension ArticleTableCell: ViewCodable {
     func buildViewHierarchy() {
         
         addSubview(titleVideo)
         addSubview(photo)
-        photo.addSubview(play)
         addSubview(descriptionVideo)
         addSubview(sharing)
         sharing.addSubview(iconSharing)
@@ -121,17 +120,9 @@ extension VideoTableCell: ViewCodable {
         ])
         
         NSLayoutConstraint.activate([
-            play.heightAnchor.constraint(equalToConstant: 40),
-            play.widthAnchor.constraint(equalToConstant: 40),
-            play.centerYAnchor.constraint(equalTo: photo.centerYAnchor, constant: 0),
-            play.centerXAnchor.constraint(equalTo: photo.centerXAnchor, constant: 0)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
             descriptionVideo.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 13),
-            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
-            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin + 13 ),
+            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin - 13)
         ])
         
         NSLayoutConstraint.activate([
@@ -146,7 +137,6 @@ extension VideoTableCell: ViewCodable {
             iconSharing.widthAnchor.constraint(equalToConstant: 14),
             iconSharing.leadingAnchor.constraint(equalTo: sharing.leadingAnchor, constant: 6),
             iconSharing.centerYAnchor.constraint(equalTo: sharing.centerYAnchor, constant: 0)
-            
         ])
         NSLayoutConstraint.activate([
             textSharing.leadingAnchor.constraint(equalTo: iconSharing.trailingAnchor, constant: 7),
@@ -155,9 +145,7 @@ extension VideoTableCell: ViewCodable {
     }
     
     func setupAdditionalConfiguration() {
-        photo.makeRoundBorder(withCornerRadius: 20)
+        photo.makeRoundBorder(withCornerRadius: 10)
         sharing.makeRoundBorder(withCornerRadius: 15)
-        
     }
-    
 }

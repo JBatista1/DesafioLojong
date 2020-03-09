@@ -15,6 +15,9 @@ extension UIColor {
     static let brownApp = UIColor(named: "brownApp")
     static let redLowSaturation = UIColor(named: "redLowSaturation")
     static let redLowSaturation2 = UIColor(named: "redLowSaturation2")
-    static  let grayApp = UIColor(named: "grayApp")
-    static  let grayAppLight = UIColor(named: "grayAppLight")
+    static let grayApp = UIColor(named: "grayApp")
+    static let grayAppLight = UIColor(named: "grayAppLight")
+    static let whiteApp = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+    static let brownAppLight = UIColor(named: "brownAppLight")
+    static let blueApp = UIColor(named: "blueApp")
 }

@@ -21,10 +21,11 @@ class Insight: UIView {
         return scroll
     }()
     
-    let information: UITableView = {
+    var table: UITableView = {
         let table = UITableView()
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 600
+        table.backgroundColor = UIColor.whiteApp
         table.viewCodeMaskConstraints()
         return table
 
@@ -61,7 +62,7 @@ class Insight: UIView {
         button.setTitle("CITAÇÕES", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(UIColor.redLowSaturation, for: .highlighted)
-        button.tag = 0
+        button.tag = 2
         button.viewCodeMaskConstraints()
         return button
     }()
@@ -69,6 +70,7 @@ class Insight: UIView {
     init(heightSegment: CGFloat) {
         self.heightSegment = heightSegment
         super.init(frame: .zero)
+        
         backgroundColor = UIColor.redLowSaturation
         setupView()
     }
@@ -89,7 +91,7 @@ extension Insight: ViewCodable {
         segment.addSubview(video)
         segment.addSubview(article)
         segment.addSubview(quote)
-        addSubview(information)
+        addSubview(table)
         
     }
     
@@ -130,10 +132,10 @@ extension Insight: ViewCodable {
         ])
         
         NSLayoutConstraint.activate([
-            information.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 10),
-            information.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            information.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            information.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+            table.topAnchor.constraint(equalTo: segment.bottomAnchor, constant: 10),
+            table.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            table.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            table.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
     }
     
