@@ -1,5 +1,5 @@
 //
-//  ArticleDataSource.swift
+//  QuoteDataSource.swift
 //  Desafio
 //
 //  Created by Joao Batista on 09/03/20.
@@ -9,18 +9,19 @@
 import Foundation
 import UIKit
 
-class ArticleDataSource: NSObject, TableViewDatasource {
-    typealias T = ArticleImage
-    var items: [ArticleImage]
+class QuoteDataSource: NSObject, TableViewDatasource {
+    typealias T = QuoteAuthor
+    var items: [QuoteAuthor]
     fileprivate let cellId = "id"
     var tableView: UITableView?
     var tag = 0
     
-    required init(items: [ArticleImage], tableView: UITableView) {
+    required init(items: [QuoteAuthor], tableView: UITableView) {
         self.items = items
         self.tableView = tableView
         super.init()
-        tableView.register(VideoTableCell.self, forCellReuseIdentifier: cellId)
+        tableView.rowHeight = 385.0
+        tableView.register(QuoteTableCell.self, forCellReuseIdentifier: cellId)
         self.setupTableView()
     }
     
@@ -33,8 +34,8 @@ class ArticleDataSource: NSObject, TableViewDatasource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath) as? ArticleTableCell
-        cell?.setupValues(article: items[indexPath.row].article, image: items[indexPath.row].image)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath) as? QuoteTableCell
+        cell?.setupValues(quote: items[indexPath.row], quoteBackground: .blue)
         cell?.backgroundColor = .white
         return cell!
         

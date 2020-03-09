@@ -82,8 +82,6 @@ class VideoTableCell: UITableViewCell {
         titleVideo.text = video.name
         descriptionVideo.text = video.description
         photo.setImage(image, for: .normal)
-        
-        
     }
     
     required init?(coder: NSCoder) {

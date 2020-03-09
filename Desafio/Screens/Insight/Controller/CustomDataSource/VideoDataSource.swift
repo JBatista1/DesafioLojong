@@ -44,6 +44,7 @@ class VideoDataSource: NSObject, TableViewDatasource {
         cell?.photo.tag = indexPath.row
         
         cell?.photo.addTarget(self, action: #selector(playVideo(sender:)), for: .touchUpInside)
+        cell?.backgroundColor = .white
         tag = indexPath.row
         return cell!
     }

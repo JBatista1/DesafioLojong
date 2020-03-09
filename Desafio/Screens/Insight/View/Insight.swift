@@ -25,6 +25,7 @@ class Insight: UIView {
         let table = UITableView()
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 600
+        table.backgroundColor = UIColor.whiteApp
         table.viewCodeMaskConstraints()
         return table
 
@@ -69,6 +70,7 @@ class Insight: UIView {
     init(heightSegment: CGFloat) {
         self.heightSegment = heightSegment
         super.init(frame: .zero)
+        
         backgroundColor = UIColor.redLowSaturation
         setupView()
     }

@@ -8,6 +8,11 @@
 
 import Foundation
 import UIKit
+
+struct VideoDAO {
+    var videos: [Video]
+}
+
 struct Video {
     var id: String
     var name: String

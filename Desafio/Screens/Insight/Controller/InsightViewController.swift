@@ -12,8 +12,10 @@ import AVKit
 class InsightViewController: UIViewController {
     let customView = Insight(heightSegment: 44)
     var videoDataSource: VideoDataSource!
+    var quoteDataSource: QuoteDataSource!
     var videos: [VideoImage] = []
     var articles: [ArticleImage] = []
+    var quaotes: [QuoteAuthor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +25,9 @@ class InsightViewController: UIViewController {
         let videoI = VideoImage(video: video, image: UIImage(named: "model")!)
         videos.append(videoI)
         videos.append(videoI)
-        videoDataSource = VideoDataSource(items: videos, tableView: customView.information)
-        videoDataSource.delegate = self
+        let test = QuoteAuthor(quote: Quote(id: "2", text: "EU TO AQUI"), author: "Tadeu")
+        quoteDataSource = QuoteDataSource(items: [test, test], tableView: customView.information)
+
     }
     
     func setupActions() {
@@ -46,7 +49,6 @@ class InsightViewController: UIViewController {
 
 extension InsightViewController: VideoDataSorceDelegate {
     func buttonClicked(tag: Int) {
-        print(tag)
         let url = videos[tag].video.aws_url
         let videoURLString = url
         if let url = URL(string: videoURLString) {
