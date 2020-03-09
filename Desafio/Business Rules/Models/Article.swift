@@ -8,6 +8,11 @@
 
 import Foundation
 import UIKit
+
+struct ArticleDAO {
+    var articles: [Article]
+}
+
 struct Article {
     var id: String
     var text: String

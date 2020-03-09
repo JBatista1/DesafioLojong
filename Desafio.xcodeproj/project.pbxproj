@@ -18,6 +18,10 @@
 		9A37E1C6241620F000B92DDA /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C5241620F000B92DDA /* Article.swift */; };
 		9A37E1C9241624F800B92DDA /* VideoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1C8241624F800B92DDA /* VideoDataSource.swift */; };
 		9A37E1CB241629EA00B92DDA /* ArticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */; };
+		9A37E1CE241634A600B92DDA /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1CD241634A600B92DDA /* Quote.swift */; };
+		9A37E1D02416379700B92DDA /* QuotesBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1CF2416379700B92DDA /* QuotesBackground.swift */; };
+		9A37E1D224163C9900B92DDA /* QuoteTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1D124163C9900B92DDA /* QuoteTableCell.swift */; };
+		9A37E1D42416436400B92DDA /* QuoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A37E1D32416436400B92DDA /* QuoteDataSource.swift */; };
 		9A480ED6241300BC00115B73 /* UIButton+CreateStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */; };
 		9A4B2EA02411D4BD002B2558 /* UIImager+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */; };
 		9A4B2EA22411F20C002B2558 /* UINavigationController+setShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */; };
@@ -83,6 +87,10 @@
 		9A37E1C5241620F000B92DDA /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		9A37E1C8241624F800B92DDA /* VideoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDataSource.swift; sourceTree = "<group>"; };
 		9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataSource.swift; sourceTree = "<group>"; };
+		9A37E1CD241634A600B92DDA /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		9A37E1CF2416379700B92DDA /* QuotesBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesBackground.swift; sourceTree = "<group>"; };
+		9A37E1D124163C9900B92DDA /* QuoteTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableCell.swift; sourceTree = "<group>"; };
+		9A37E1D32416436400B92DDA /* QuoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDataSource.swift; sourceTree = "<group>"; };
 		9A480ED5241300BC00115B73 /* UIButton+CreateStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CreateStep.swift"; sourceTree = "<group>"; };
 		9A4B2E9F2411D4BD002B2558 /* UIImager+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImager+resize.swift"; sourceTree = "<group>"; };
 		9A4B2EA12411F20C002B2558 /* UINavigationController+setShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+setShadow.swift"; sourceTree = "<group>"; };
@@ -152,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9A0799922412B53400632A41 /* ImageSteps.swift */,
+				9A37E1CF2416379700B92DDA /* QuotesBackground.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -159,9 +168,8 @@
 		9A2F71AF241529AE0027B216 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A37E1CC241633B400B92DDA /* Cell */,
 				9AD69AD5241536B6009907A2 /* Insight.swift */,
-				9A37E1BF2416030700B92DDA /* VideoTableCell.swift */,
-				9A37E1C124161EEB00B92DDA /* ArticleTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,8 +179,19 @@
 			children = (
 				9A37E1C8241624F800B92DDA /* VideoDataSource.swift */,
 				9A37E1CA241629EA00B92DDA /* ArticleDataSource.swift */,
+				9A37E1D32416436400B92DDA /* QuoteDataSource.swift */,
 			);
 			path = CustomDataSource;
+			sourceTree = "<group>";
+		};
+		9A37E1CC241633B400B92DDA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9A37E1BF2416030700B92DDA /* VideoTableCell.swift */,
+				9A37E1C124161EEB00B92DDA /* ArticleTableCell.swift */,
+				9A37E1D124163C9900B92DDA /* QuoteTableCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		9A7342CC2411B06D00DB5906 /* View */ = {
@@ -190,6 +209,7 @@
 				9A4D385C24140D2700635D4D /* ElephantSteps.swift */,
 				9A37E1C32416207B00B92DDA /* Video.swift */,
 				9A37E1C5241620F000B92DDA /* Article.swift */,
+				9A37E1CD241634A600B92DDA /* Quote.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -586,6 +606,7 @@
 				9A4D385D24140D2700635D4D /* ElephantSteps.swift in Sources */,
 				9AA4AF91241012F600BD7C64 /* ProviderProtocol.swift in Sources */,
 				9AA4AF8D241012F600BD7C64 /* Network.swift in Sources */,
+				9A37E1D02416379700B92DDA /* QuotesBackground.swift in Sources */,
 				9AA4AF8A241012F600BD7C64 /* NetworkResponse.swift in Sources */,
 				9AA4AF8B241012F600BD7C64 /* HTTPMethod.swift in Sources */,
 				9AA4AFBB241016D300BD7C64 /* UIView+DesignView.swift in Sources */,
@@ -608,12 +629,15 @@
 				9A37E1C6241620F000B92DDA /* Article.swift in Sources */,
 				9AD69AD6241536B6009907A2 /* Insight.swift in Sources */,
 				9A37E1CB241629EA00B92DDA /* ArticleDataSource.swift in Sources */,
+				9A37E1CE241634A600B92DDA /* Quote.swift in Sources */,
 				9A0799932412B53400632A41 /* ImageSteps.swift in Sources */,
 				9AA4AF502410111D00BD7C64 /* SceneDelegate.swift in Sources */,
 				9AED2AA2241096D7004A02FB /* InsightViewController.swift in Sources */,
 				9A37E1C02416030700B92DDA /* VideoTableCell.swift in Sources */,
 				9A14D66C2413101E00BEA93C /* StepsRoute.swift in Sources */,
+				9A37E1D42416436400B92DDA /* QuoteDataSource.swift in Sources */,
 				9AA4AF8F241012F600BD7C64 /* ServiceProtocol.swift in Sources */,
+				9A37E1D224163C9900B92DDA /* QuoteTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
