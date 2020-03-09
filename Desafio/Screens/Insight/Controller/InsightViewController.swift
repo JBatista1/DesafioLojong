@@ -10,9 +10,14 @@ import UIKit
 
 class InsightViewController: UIViewController {
     let customView = Insight(heightSegment: 44)
+    var videoDataSource: VideoDataSorce!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActions()
+        let video = Video(id: "DADSADSAd", name: "tututodaidsa", description: "d,naskdjas", image_url: "jdkashkjdas", aws_url: "djksahdkjsa")
+        let videoI = VideoImage(video: video, image: UIImage(named: "model")!)
+        videoDataSource = VideoDataSorce(items: [videoI], tableView: customView.information)
     }
     
     func setupActions() {
