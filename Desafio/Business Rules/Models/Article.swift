@@ -9,15 +9,25 @@
 import Foundation
 import UIKit
 
-struct ArticleDAO {
-    var articles: [Article]
+struct ArticleDAO: Codable {
+    let articles: [Article]
 }
 
-struct Article {
-    var id: String
-    var text: String
-    var title: String
-    var image_url: String
+struct Article: Codable {
+    let id: Int
+    let text, title: String
+    let imageURL: String
+    let authorName: String
+    let url: String
+    let premium, order: Int
+    var image: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id, text, title
+        case imageURL = "image_url"
+        case authorName = "author_name"
+        case url, premium, order, image
+    }
 }
 struct ArticleImage {
     var article: Article

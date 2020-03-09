@@ -14,14 +14,14 @@ protocol VideoDataSorceDelegate: class {
 }
 
 class VideoDataSource: NSObject, TableViewDatasource {
-    typealias T = VideoImage
-    var items: [VideoImage]
+    typealias T = Video
+    var items: [Video]
     fileprivate let cellId = "id"
     var tableView: UITableView?
     weak var delegate: VideoDataSorceDelegate?
     var tag = 0
     
-    required init(items: [VideoImage], tableView: UITableView) {
+    required init(items: [Video], tableView: UITableView) {
         self.items = items
         self.tableView = tableView
         super.init()
@@ -32,6 +32,7 @@ class VideoDataSource: NSObject, TableViewDatasource {
     func setupTableView() {
         tableView?.dataSource = self
         tableView?.delegate = self
+        tableView?.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,15 +41,16 @@ class VideoDataSource: NSObject, TableViewDatasource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "id", for: indexPath) as? VideoTableCell
-        cell?.setupValues(video: items[indexPath.row].video, image: items[indexPath.row].image)
+        cell?.photo.setImage(UIImage(named: "imageDefault"), for: .normal)
+        cell?.setupValues(video: items[indexPath.row])
         cell?.photo.tag = indexPath.row
         
         cell?.photo.addTarget(self, action: #selector(playVideo(sender:)), for: .touchUpInside)
         cell?.backgroundColor = .white
-        tag = indexPath.row
+        cell?.photo.tag = indexPath.row
         return cell!
     }
- 
+    
     @objc func playVideo(sender: UIButton) {
         delegate?.buttonClicked(tag: sender.tag)
         

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class VideoTableCell: UITableViewCell {
+    private let provider = URLSessionProvider()
     
     let titleVideo: UILabel = {
         let label = UILabel()
@@ -40,7 +41,7 @@ class VideoTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.grayApp
         label.viewCodeMaskConstraints()
         return label
@@ -58,7 +59,7 @@ class VideoTableCell: UITableViewCell {
         let imageview = UIImageView()
         imageview.viewCodeMaskConstraints()
         imageview.image = UIImage(named: "sharing")
-        imageview.contentMode = .scaleAspectFit
+        imageview.contentMode = .scaleAspectFill
         return imageview
     }()
     let textSharing: UILabel = {
@@ -76,12 +77,23 @@ class VideoTableCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         setupView()
+    }
+    
+    func setupValues(video: Video) {
+        titleVideo.text = video.name.uppercased()
+        descriptionVideo.text = video.videosDAODescription
+        requestImage(url: video.imageURL)
         
     }
-    func setupValues(video: Video, image: UIImage) {
-        titleVideo.text = video.name
-        descriptionVideo.text = video.description
-        photo.setImage(image, for: .normal)
+    
+    func requestImage(url: String) {
+        let url = URL(string: url)
+        URLSession.shared.dataTask(with: url!) { (data, _, _) in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.photo.setImage(UIImage(data: data), for: .normal)
+            }
+        }.resume()
     }
     
     required init?(coder: NSCoder) {
@@ -91,7 +103,6 @@ class VideoTableCell: UITableViewCell {
 
 extension VideoTableCell: ViewCodable {
     func buildViewHierarchy() {
-        
         addSubview(titleVideo)
         addSubview(photo)
         photo.addSubview(play)
@@ -128,8 +139,8 @@ extension VideoTableCell: ViewCodable {
         
         NSLayoutConstraint.activate([
             descriptionVideo.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 13),
-            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
-            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin + 13 ),
+            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin - 13)
         ])
         
         NSLayoutConstraint.activate([

@@ -15,6 +15,7 @@ class QuoteTableCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.viewCodeMaskConstraints()
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = UIColor(white: 0, alpha: 0)
         return imageView
     }()
     
@@ -22,7 +23,7 @@ class QuoteTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.viewCodeMaskConstraints()
         return label
     }()
@@ -73,14 +74,13 @@ class QuoteTableCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupValues(quote: QuoteAuthor, quoteBackground: QuotesBackground) {
+    func setupValues(quote: String, quoteBackground: QuotesBackground, nameAuthor: String) {
         background.image = quoteBackground.image
-        textQuote.text = quote.quote.text
+        textQuote.text = quote
         textQuote.textColor = quoteBackground.color
         author.textColor = quoteBackground.color
-        author.text = quote.author
+        author.text = nameAuthor
         sharing.backgroundColor = quoteBackground.buttonColor
-        
     }
     
 }
@@ -90,7 +90,7 @@ extension QuoteTableCell: ViewCodable {
         addSubview(background)
         background.addSubview(textQuote)
         background.addSubview(author)
-        background.addSubview(sharing)
+        addSubview(sharing)
         sharing.addSubview(iconSharing)
         sharing.addSubview(textSharing)
     }
@@ -103,9 +103,9 @@ extension QuoteTableCell: ViewCodable {
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
         NSLayoutConstraint.activate([
-            textQuote.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 10),
-            textQuote.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -10),
-            textQuote.centerYAnchor.constraint(equalTo: background.centerYAnchor, constant: 0),
+            textQuote.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 25),
+            textQuote.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -25),
+            textQuote.centerYAnchor.constraint(equalTo: background.centerYAnchor, constant: -30),
             textQuote.centerXAnchor.constraint(equalTo: background.centerXAnchor, constant: 0)
         ])
         
@@ -134,6 +134,7 @@ extension QuoteTableCell: ViewCodable {
     }
     
     func setupAdditionalConfiguration() {
-         sharing.makeRoundBorder(withCornerRadius: 15)
+            
+         sharing.makeRoundBorder(withCornerRadius: 10)
     }
 }

@@ -23,7 +23,7 @@ class ArticleTableCell: UITableViewCell {
     
     let photo: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.viewCodeMaskConstraints()
         imageView.isUserInteractionEnabled = true
         return imageView
@@ -33,7 +33,7 @@ class ArticleTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.grayApp
         label.viewCodeMaskConstraints()
         return label
@@ -71,13 +71,21 @@ class ArticleTableCell: UITableViewCell {
         setupView()
         
     }
-    func setupValues(article: Article, image: UIImage) {
-        titleVideo.text = article.title
-        descriptionVideo.text = article.text
-        photo.image = image
-        
+    func setupValues(articleImage: Article) {
+        titleVideo.text = articleImage.title
+        descriptionVideo.text = articleImage.text
+        requestImage(url: articleImage.imageURL)
     }
     
+    func requestImage(url: String) {
+        let url = URL(string: url)
+        URLSession.shared.dataTask(with: url!) { (data, _, _) in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                 self.photo.image = UIImage(data: data)!
+            }
+        }.resume()
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -113,8 +121,8 @@ extension ArticleTableCell: ViewCodable {
         
         NSLayoutConstraint.activate([
             descriptionVideo.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: 13),
-            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin),
-            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin)
+            descriptionVideo.leadingAnchor.constraint(equalTo: leadingAnchor, constant: margin + 13 ),
+            descriptionVideo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -margin - 13)
         ])
         
         NSLayoutConstraint.activate([
@@ -137,9 +145,7 @@ extension ArticleTableCell: ViewCodable {
     }
     
     func setupAdditionalConfiguration() {
-        photo.makeRoundBorder(withCornerRadius: 20)
+        photo.makeRoundBorder(withCornerRadius: 10)
         sharing.makeRoundBorder(withCornerRadius: 15)
-        
     }
-    
 }

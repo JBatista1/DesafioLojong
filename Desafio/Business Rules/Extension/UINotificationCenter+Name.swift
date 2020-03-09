@@ -1,5 +1,5 @@
 //
-//  Quotes.swift
+//  UINotificationCenter+Name.swift
 //  Desafio
 //
 //  Created by Joao Batista on 09/03/20.
@@ -7,11 +7,6 @@
 //
 
 import Foundation
-
-typealias QuoteDAO = [Quote]
-
-struct Quote: Codable {
-    let id: Int
-    let text: String
-    let order: Int
+extension Notification.Name {
+    static let loadImages = Notification.Name("loadImagesArticle")
 }
