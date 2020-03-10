@@ -174,7 +174,6 @@
 				AD070172FF8EACBFD2B19160 /* Pods-DesafioTests.debug.xcconfig */,
 				8CC310F059879E74FC37BCDA /* Pods-DesafioTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -876,7 +875,8 @@
 			baseConfigurationReference = D6B18ACEC394F8D6D8B34435 /* Pods-Desafio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6XYJN7S9JQ;
 				INFOPLIST_FILE = "Desafio/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -885,6 +885,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joaoBatista.Desafio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Lojong;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -895,7 +896,8 @@
 			baseConfigurationReference = CD07261A710E50EE9036E4AF /* Pods-Desafio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6XYJN7S9JQ;
 				INFOPLIST_FILE = "Desafio/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -904,6 +906,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joaoBatista.Desafio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Lojong;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
