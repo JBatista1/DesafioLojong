@@ -5,6 +5,8 @@
 //  Created by Joao Batista on 04/03/20.
 //  Copyright © 2020 Joao Batista. All rights reserved.
 //
+import AppCenter
+import AppCenterCrashes
 
 import UIKit
 
@@ -16,6 +18,9 @@ class FundamentalsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAppCenter.start("4b26e7d7-f5e5-4af3-abe3-b3921a299317", withServices: [
+          MSCrashes.self
+        ])
         setupNavigationBart()
         if let steps = customView.steps as? [StepsRoute] {
             setupAction(inButton: steps)
