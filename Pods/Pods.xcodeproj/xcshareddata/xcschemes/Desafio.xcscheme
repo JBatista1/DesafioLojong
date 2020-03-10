@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9AA4AF492410111D00BD7C64"
                BuildableName = "Desafio.app"
                BlueprintName = "Desafio"
-               ReferencedContainer = "container:Desafio.xcodeproj">
+               ReferencedContainer = "container:../Desafio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "9AA4AF5F2410112000BD7C64"
                BuildableName = "DesafioTests.xctest"
                BlueprintName = "DesafioTests"
-               ReferencedContainer = "container:Desafio.xcodeproj">
+               ReferencedContainer = "container:../Desafio.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "9AA4AF492410111D00BD7C64"
             BuildableName = "Desafio.app"
             BlueprintName = "Desafio"
-            ReferencedContainer = "container:Desafio.xcodeproj">
+            ReferencedContainer = "container:../Desafio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "9AA4AF492410111D00BD7C64"
             BuildableName = "Desafio.app"
             BlueprintName = "Desafio"
-            ReferencedContainer = "container:Desafio.xcodeproj">
+            ReferencedContainer = "container:../Desafio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
