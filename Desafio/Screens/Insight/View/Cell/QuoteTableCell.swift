@@ -47,7 +47,8 @@ class QuoteTableCell: UITableViewCell {
     let iconSharing: UIImageView = {
         let imageview = UIImageView()
         imageview.viewCodeMaskConstraints()
-        imageview.image = UIImage(named: "sharing")?.withTintColor(.white)
+        imageview.image = UIImage(named: "sharing")?.withRenderingMode(.alwaysTemplate)
+        imageview.tintColor = .white
         imageview.contentMode = .scaleAspectFit
         return imageview
     }()
