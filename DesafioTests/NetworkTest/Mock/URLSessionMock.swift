@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Empresas_iOS_Desafio
+@testable import Desafio
 
 final class URLSessionMock: URLSessionProtocol {
     private(set) var dataTaskCalled = false

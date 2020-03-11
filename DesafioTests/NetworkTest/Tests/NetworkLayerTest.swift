@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import Empresas_iOS_Desafio
+@testable import Desafio
 
 class NetworkLayerTest: XCTestCase {
     var dataTask: URLSessionDataTaskMock!
@@ -121,17 +121,4 @@ class NetworkLayerTest: XCTestCase {
         XCTAssertEqual(sucessResult?.test, "test", "Result not obtained")
     }
     
-    // MARK: - Integration Test: Check results obtained after request
-    func testJsonMockCheckResults() {
-        var facts = [Fact]()
-        session.service = ServiceMock.jsonMock
-        provider.request(type: FactResult.self, service: ServiceMock.jsonMock) { response in
-            switch response {
-            case let.success(result):
-                facts = result.result
-            default: break
-            }
-        }
-        XCTAssertEqual(facts[0].value, "Who knows what evil lurks in the hearts of men? Goddamn Chuck Norris, that's who.", "Result not obtained")
-    }
 }

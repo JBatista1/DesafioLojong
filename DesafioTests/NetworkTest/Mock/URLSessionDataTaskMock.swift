@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@testable import Empresas_iOS_Desafio
+@testable import Desafio
 
 final class URLSessionDataTaskMock: URLSessionDataTaskProtocol {
     
